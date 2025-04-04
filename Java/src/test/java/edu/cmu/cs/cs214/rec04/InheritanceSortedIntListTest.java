@@ -11,6 +11,7 @@ import org.junit.Test;
  *
  */
 public class InheritanceSortedIntListTest {
+
     private InheritanceSortedIntList list1;
     private InheritanceSortedIntList list2;
 
@@ -26,10 +27,13 @@ public class InheritanceSortedIntListTest {
         list1.add(3);
         list1.add(2);
         list1.add(4);
-        list1.add(2);
-        System.out.println(list1.getTotalAdded());
-        assertTrue(list1.getTotalAdded() == 5);
-        printList(list1);
+
+        assertEquals(4, list1.getTotalAdded());
+
+        assertEquals(1, list1.get(0));
+        assertEquals(2, list1.get(1));
+        assertEquals(3, list1.get(2));
+        assertEquals(4, list1.get(3));
     }
 
     @Test
@@ -40,23 +44,23 @@ public class InheritanceSortedIntListTest {
         list1.add(4);
         list1.add(2);
 
-        assertTrue(list1.getTotalAdded() == 5);
+        assertEquals(5, list1.getTotalAdded());
 
         list2.add(3);
         list2.add(0);
 
-        assertTrue(list2.getTotalAdded() == 2);
+        assertEquals(2, list2.getTotalAdded());
 
         list2.addAll(list1);
 
-        assertTrue(list2.getTotalAdded() == 7);
-    }
+        assertEquals(7, list2.getTotalAdded());
 
-    private void printList(IntegerList list) {
-        for (int i = 0; i < list.size(); i++) {
-        System.out.print(list.get(i));
-        System.out.print(", ");
-        }
-        System.out.println();
+        assertEquals(0, list2.get(0));
+        assertEquals(1, list2.get(1));
+        assertEquals(2, list2.get(2));
+        assertEquals(2, list2.get(3));  
+        assertEquals(3, list2.get(4));
+        assertEquals(3, list2.get(5));
+        assertEquals(4, list2.get(6));
     }
 }

@@ -70,4 +70,5 @@ public abstract class AbstractIntList implements IntegerList {
      * @return number of elements in the list
      */
     public abstract int size();
+
 }

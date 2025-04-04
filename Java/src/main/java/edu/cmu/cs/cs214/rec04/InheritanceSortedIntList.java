@@ -1,26 +1,23 @@
 package edu.cmu.cs.cs214.rec04;
 
 /**
- * InheritanceSortedIntList -- a subclass of AbstractIntList that tracks the number of elements added.
- * This class inherits from AbstractIntList and overrides the add and addAll methods to track
- * how many elements have been added to the list.
- * 
+ * InheritanceSortedIntList -- a variant of a SortedIntList that keeps
+ * count of the number of attempted element insertions (not to be confused
+ * with the current size, which goes down when an element is removed)
+ * and exports an accessor (totalAdded) for this count.
+ *
  * @author Nora Shoemaker
  *
  */
-public class InheritanceSortedIntList extends SortedIntList {
-    int totalAdded = 0;
+
+public class InheritanceSortedIntList extends SortedIntLinkedList {
     // Write your implementation below with API documentation
-    @Override
-    public boolean add(int num) {
-        super.add(num);
-        totalAdded += 1;
-        return true;
-    }
+    private int totalAdded = 0;
 
     @Override
-    public boolean addAll(IntegerList list) {
-        return super.addAll(list);
+    public boolean add(int num) {
+        totalAdded++;
+        return super.add(num);
     }
 
     public int getTotalAdded() {
